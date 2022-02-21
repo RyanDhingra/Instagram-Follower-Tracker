@@ -7,7 +7,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
 
     username = str(input("Enter your Instagram username: "))
     password = str(input("Enter your Instagram password: "))
-    PATH = '#ENTER YOUR PATH TO THE CHROMEDRIVER.EXE HERE'
+    PATH = ENTER YOUR PATH TO THE CHROMEDRIVER.EXE HERE
     driver = webdriver.Chrome(PATH)
     driver.get("https://www.instagram.com/" + username + "/followers/")
     driver.implicitly_wait(30)
