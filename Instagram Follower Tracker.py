@@ -7,7 +7,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
 
     username = str(input("Enter your Instagram username: "))
     password = str(input("Enter your Instagram password: "))
-    PATH = ENTER YOUR PATH TO THE CHROMEDRIVER.EXE HERE
+    PATH = #'ENTER YOUR PATH TO THE CHROMEDRIVER.EXE HERE'
     driver = webdriver.Chrome(PATH)
     driver.get("https://www.instagram.com/" + username + "/followers/")
     driver.implicitly_wait(30)
@@ -29,7 +29,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     time.sleep(4)
     followers_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
 
-    for x in range(follower_num//2):
+    for x in range(follower_num//3):
         driver.execute_script('arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', followers_window)
         time.sleep(0.5)
         
@@ -47,6 +47,12 @@ def get_data(): #Logs in and scrapes your list of follower and following account
                 break
     f1.close()
 
+    with open("FollowersUsernames.txt", 'a', encoding='UTF-8') as f1:
+        last_user = driver.find_elements(by=By.CLASS_NAME, value="_7UhW9.xLCgt.qyrsm.KV-D4.se6yk.T0kll")[-1]
+        f1.write(last_user.text)
+    
+    f1.close()
+
     exit = driver.find_element(by=By.CSS_SELECTOR, value="svg[aria-label='Close']")
     exit.click()
     time.sleep(1)
@@ -57,7 +63,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     time.sleep(4)
     following_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
 
-    for x in range(following_num//2):
+    for x in range(following_num//3):
         driver.execute_script('arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', following_window)
         time.sleep(0.5)
         
@@ -75,18 +81,24 @@ def get_data(): #Logs in and scrapes your list of follower and following account
                 break
     f2.close()
 
+    with open("FollowingUsernames.txt", 'a', encoding='UTF-8') as f2:
+        last_user = driver.find_elements(by=By.CLASS_NAME, value="_7UhW9.xLCgt.qyrsm.KV-D4.se6yk.T0kll")[-1]
+        f2.write(last_user.text)
+    
+    f2.close()
+
     driver.quit()
 
 def sort_data(): #Compares followers to following accounts to see which do not follow the user back.
-    my_list = []
+    line_list = []
 
     with open("FollowersUsernames.txt", 'r', encoding='UTF-8') as f1:
         with open("FollowingUsernames.txt", 'r', encoding='UTF-8') as f2:
             with open("UncommonFollowers.txt", 'w', encoding='UTF-8') as f3:
                 for line in f1:
-                    my_list.append(line)
+                    line_list.append(line.strip('\n'))
                 for line in f2:
-                    if line not in my_list:
+                    if line.strip('\n') not in line_list:
                         f3.write(line)
     
     f1.close()
