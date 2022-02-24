@@ -29,9 +29,9 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     time.sleep(4)
     followers_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
 
-    for x in range(follower_num):
+    for x in range(follower_num//4):
         driver.execute_script('arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', followers_window)
-        time.sleep(0.5)
+        time.sleep(1)
         
     follower_usernames = driver.find_elements(by=By.CLASS_NAME, value="_7UhW9.xLCgt.qyrsm.KV-D4.se6yk.T0kll")
     follower_counter = 0
@@ -57,9 +57,9 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     time.sleep(4)
     following_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
 
-    for x in range(following_num):
+    for x in range(following_num//4):
         driver.execute_script('arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', following_window)
-        time.sleep(0.5)
+        time.sleep(1)
         
     following_usernames = driver.find_elements(by=By.CLASS_NAME, value="_7UhW9.xLCgt.qyrsm.KV-D4.se6yk.T0kll")
     following_counter = 0
