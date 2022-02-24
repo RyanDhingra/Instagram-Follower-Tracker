@@ -26,7 +26,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     followers_button = driver.find_element(by=By.PARTIAL_LINK_TEXT, value=(" followers"))
     follower_num = int(followers_button.text.strip(" followers").replace(',', ''))
     followers_button.click()
-    time.sleep(5)
+    time.sleep(10)
     followers_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
 
     for x in range(follower_num//4):
@@ -54,7 +54,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     following_button = driver.find_element(by=By.PARTIAL_LINK_TEXT, value=(" following"))
     following_num = int(following_button.text.strip(" following").replace(',', ''))
     following_button.click()
-    time.sleep(5)
+    time.sleep(10)
     following_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
 
     for x in range(following_num//4):
