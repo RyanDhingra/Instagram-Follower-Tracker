@@ -41,7 +41,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
             if follower_counter < follower_num:
                 f1.write(names.text)
                 f1.write('\n')
-                follower_counter +=1
+                follower_counter += 1
             else:
                 follower_counter == follower_num
                 break
@@ -69,7 +69,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
             if following_counter < following_num:
                 f2.write(names.text)
                 f2.write('\n')
-                following_counter +=1
+                following_counter += 1
             else:
                 following_counter == following_num
                 break
