@@ -18,15 +18,15 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     password_login.send_keys(password)
     login_button = driver.find_element(by=By.CLASS_NAME, value="sqdOP.L3NKy.y3zKF")
     login_button.click()
-    time.sleep(4)
+    time.sleep(5)
     not_now_button = driver.find_element(by=By.CLASS_NAME, value="sqdOP.yWX7d.y3zKF")
     not_now_button.click()
-    time.sleep(4)
+    time.sleep(5)
     
     followers_button = driver.find_element(by=By.PARTIAL_LINK_TEXT, value=(" followers"))
     follower_num = int(followers_button.text.strip(" followers").replace(',', ''))
     followers_button.click()
-    time.sleep(4)
+    time.sleep(5)
     followers_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
 
     for x in range(follower_num//4):
@@ -54,7 +54,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     following_button = driver.find_element(by=By.PARTIAL_LINK_TEXT, value=(" following"))
     following_num = int(following_button.text.strip(" following").replace(',', ''))
     following_button.click()
-    time.sleep(4)
+    time.sleep(5)
     following_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
 
     for x in range(following_num//4):
