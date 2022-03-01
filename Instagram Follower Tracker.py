@@ -108,4 +108,5 @@ def sort_data(): #Compares followers to following accounts to see which do not f
 if __name__ == "__main__":
     get_data()
     sort_data()
+    print("COMPLETE: Please view uncommon followers.")
 
