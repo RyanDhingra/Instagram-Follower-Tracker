@@ -47,12 +47,6 @@ def get_data(): #Logs in and scrapes your list of follower and following account
                 break
     f1.close()
 
-    with open("FollowersUsernames.txt", 'a', encoding='UTF-8') as f1:
-        last_user = driver.find_elements(by=By.CLASS_NAME, value="_7UhW9.xLCgt.qyrsm.KV-D4.se6yk.T0kll")[-1]
-        f1.write(last_user.text)
-    
-    f1.close()
-
     exit = driver.find_element(by=By.CSS_SELECTOR, value="svg[aria-label='Close']")
     exit.click()
     time.sleep(1)
@@ -79,12 +73,6 @@ def get_data(): #Logs in and scrapes your list of follower and following account
             else:
                 following_counter == following_num
                 break
-    f2.close()
-
-    with open("FollowingUsernames.txt", 'a', encoding='UTF-8') as f2:
-        last_user = driver.find_elements(by=By.CLASS_NAME, value="_7UhW9.xLCgt.qyrsm.KV-D4.se6yk.T0kll")[-1]
-        f2.write(last_user.text)
-    
     f2.close()
 
     driver.quit()
