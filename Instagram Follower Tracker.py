@@ -1,14 +1,14 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
 import time
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 def get_data(): #Logs in and scrapes your list of follower and following accounts.
 
     username = str(input("Enter your Instagram username: "))
     password = str(input("Enter your Instagram password: "))
-    PATH = #'ENTER YOUR PATH TO THE CHROMEDRIVER.EXE HERE'
-    driver = webdriver.Chrome(PATH)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get("https://www.instagram.com/" + username + "/followers/")
     driver.implicitly_wait(30)
     time.sleep(2)
@@ -109,4 +109,3 @@ if __name__ == "__main__":
     get_data()
     sort_data()
     print("COMPLETE: Please view uncommon followers.")
-
