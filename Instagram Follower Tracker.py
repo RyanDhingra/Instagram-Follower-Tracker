@@ -12,6 +12,7 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     driver.get("https://www.instagram.com/" + username + "/followers/")
     driver.implicitly_wait(30)
     time.sleep(2)
+
     username_login = driver.find_element(by=By.NAME, value='username')
     username_login.send_keys(username)
     password_login = driver.find_element(by=By.NAME, value='password')
@@ -19,21 +20,22 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     login_button = driver.find_element(by=By.CLASS_NAME, value="sqdOP.L3NKy.y3zKF")
     login_button.click()
     time.sleep(4)
+
     not_now_button = driver.find_element(by=By.CLASS_NAME, value="sqdOP.yWX7d.y3zKF")
     not_now_button.click()
     time.sleep(4)
     
     followers_button = driver.find_element(by=By.PARTIAL_LINK_TEXT, value=(" followers"))
     follower_num = int(followers_button.text.strip(" followers").replace(',', ''))
-    followers_button.click()
     time.sleep(4)
-    followers_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
+
+    followers_window = driver.find_element(by=By.CLASS_NAME, value="_aano")
 
     for x in range(follower_num//3):
         driver.execute_script('arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', followers_window)
         time.sleep(0.5)
         
-    follower_usernames = driver.find_elements(by=By.CLASS_NAME, value="_7UhW9.xLCgt.qyrsm.KV-D4.se6yk.T0kll")
+    follower_usernames = driver.find_elements(by=By.CLASS_NAME, value="_aacl._aaco._aacw._aacx._aad7._aade")
     follower_counter = 0
     
     with open("FollowersUsernames.txt", 'w', encoding='UTF-8') as f1:
@@ -54,14 +56,15 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     following_button = driver.find_element(by=By.PARTIAL_LINK_TEXT, value=(" following"))
     following_num = int(following_button.text.strip(" following").replace(',', ''))
     following_button.click()
-    time.sleep(4)
-    following_window = driver.find_element(by=By.CLASS_NAME, value="isgrP")
+    time.sleep(2)
+
+    following_window = driver.find_element(by=By.CLASS_NAME, value="_aano")
 
     for x in range(following_num//3):
         driver.execute_script('arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', following_window)
         time.sleep(0.5)
         
-    following_usernames = driver.find_elements(by=By.CLASS_NAME, value="_7UhW9.xLCgt.qyrsm.KV-D4.se6yk.T0kll")
+    following_usernames = driver.find_elements(by=By.CLASS_NAME, value="_aacl._aaco._aacw._aacx._aad7._aade")
     following_counter = 0
 
     with open("FollowingUsernames.txt", 'w', encoding='UTF-8') as f2:
