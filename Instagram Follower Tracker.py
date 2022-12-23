@@ -24,22 +24,25 @@ def get_data(): #Logs in and scrapes your list of follower and following account
     print("Login Clicked")
 
     not_now_button = driver.find_element(by=By.CLASS_NAME, value="_acan._acao._acas._aj1-")
-    time.sleep(1)
-    not_now_button.click()
-    time.sleep(4)
-    print("Not Now Clicked")
+    if not_now_button:
+        time.sleep(1)
+        not_now_button.click()
+        time.sleep(4)
+        print("Not Now Clicked")
 
     goback = driver.find_element(by=By.CLASS_NAME, value="x1i10hfl.xjbqb8w.x6umtig.x1b1mbwd.xaqea5y.xav7gou.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz._a6hd")
-    time.sleep(1)
-    goback.click()
-    time.sleep(4)
-    print("Go Back Clicked")
+    if goback:
+        time.sleep(1)
+        goback.click()
+        time.sleep(4)
+        print("Go Back Clicked")
     
-    not_now_button = driver.find_element(by=By.CLASS_NAME, value="_a9--._a9_1")
-    time.sleep(1)
-    not_now_button.click()
-    time.sleep(4)
-    print("Not Now Clicked")
+    not_now_button_again = driver.find_element(by=By.CLASS_NAME, value="_a9--._a9_1")
+    if not_now_button_again:
+        time.sleep(1)
+        not_now_button_again.click()
+        time.sleep(4)
+        print("Not Now Clicked")
 
     driver.get("https://www.instagram.com/" + username + "/followers/")
     time.sleep(4)
